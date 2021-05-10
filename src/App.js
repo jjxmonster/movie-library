@@ -24,9 +24,7 @@ const App = () => {
                <Suspense fallback='loading...'>
                   <MenuBar />
                </Suspense>
-               <MoviesSection>
-                  <div>elo</div>
-               </MoviesSection>
+               <MoviesSection></MoviesSection>
             </LandingPage>
          </ThemeProvider>
       </QueryClientProvider>
