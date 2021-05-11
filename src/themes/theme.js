@@ -1,15 +1,15 @@
 const theme = {
    colors: {
       grey: {
-         normal: '#2E4756',
-         dark: '#16262E',
+         normal: '#5E6465',
+         dark: '#2E3642',
+         light: '#C9C9C9',
       },
       blue: {
-         light: '#3C7A89',
+         dark: '#1436A8',
       },
-      pink: {
-         light: '#DBC2CF',
-         normal: '#9FA2B2',
+      black: {
+         normal: '#070608',
       },
    },
 };

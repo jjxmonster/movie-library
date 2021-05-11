@@ -5,9 +5,9 @@ export const StyledMenuBarWrapper = styled.nav`
    height: 100vh;
    position: fixed;
    left: 0;
-   background: ${({ theme }) => theme.colors.blue.light};
    display: flex;
    flex-direction: column;
+   background: ${({ theme }) => theme.colors.grey.light};
 `;
 
 export const StyledLogoWrapper = styled.div`
@@ -26,7 +26,10 @@ export const StyledGenresList = styled.ul`
    flex: 10;
    display: flex;
    flex-direction: column;
+   border-top-right-radius: 15px;
+   background: ${({ theme }) => theme.colors.grey.dark};
    > h2 {
+      color: ${({ theme }) => theme.colors.grey.normal};
       font-weight: 600;
       font-size: 2.5vh;
       padding-left: 8%;
@@ -41,7 +44,7 @@ export const StyledGenresListElement = styled.li`
    align-items: center;
    justify-content: start;
    position: relative;
-   color: ${({ theme }) => theme.colors.grey.dark};
+   color: ${({ theme }) => theme.colors.grey.normal};
    cursor: pointer;
    font-size: 1.6vh;
    > span {
@@ -60,7 +63,7 @@ export const StyledGenresListElement = styled.li`
       width: 0%;
       height: 100%;
       content: '';
-      background: ${({ theme }) => theme.colors.grey.normal};
+      background: ${({ theme }) => theme.colors.blue.dark};
       transition: 0.2s ease;
       visibility: hidden;
    }

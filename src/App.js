@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
+import { Switch, Route, Link, useHistory } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { LandingPage, MoviesSection } from './containers';
-import { MenuBar } from './components';
+import { MenuBar, HomePage } from './components';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './themes/theme';
@@ -16,6 +17,11 @@ const App = () => {
          },
       },
    });
+   const history = useHistory();
+
+   useEffect(() => {
+      history.push('/home');
+   });
    return (
       <QueryClientProvider client={client}>
          <ThemeProvider theme={theme}>
@@ -24,7 +30,13 @@ const App = () => {
                <Suspense fallback='loading...'>
                   <MenuBar />
                </Suspense>
-               <MoviesSection></MoviesSection>
+               <MoviesSection>
+                  <Switch>
+                     <Route path='/home'>
+                        <HomePage />
+                     </Route>
+                  </Switch>
+               </MoviesSection>
             </LandingPage>
          </ThemeProvider>
       </QueryClientProvider>

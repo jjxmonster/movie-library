@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 import { getGenres } from '../../data/fetch/config,fetch.js';
@@ -21,8 +22,10 @@ const MenuBar = () => {
       const { id, name } = genre;
       return (
          <StyledGenresListElement key={id}>
+            {/* <Link> */}
             <FontAwesomeIcon className='listIcon' icon={faDotCircle} />
             <span>{name}</span>
+            {/* </Link> */}
          </StyledGenresListElement>
       );
    });

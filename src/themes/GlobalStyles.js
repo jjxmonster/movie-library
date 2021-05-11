@@ -7,9 +7,6 @@ export default createGlobalStyle`
     box-sizing:border-box;
     font-family: 'Source Sans Pro', sans-serif;
   }
-  body{
-    background:${({ theme }) => theme.colors.grey.dark};
-  }
   a{
     text-decoration: none;
   }
