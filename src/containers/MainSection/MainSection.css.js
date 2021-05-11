@@ -5,6 +5,5 @@ export const StyledMainSectionContainer = styled.section`
    margin-left: 15%;
    height: 100vh;
    position: relative;
-   overflow: hidden;
    background: ${({ theme }) => theme.colors.grey.light};
 `;

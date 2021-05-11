@@ -5,6 +5,7 @@ export const StyledHomePageWrapper = styled.div`
    height: 100%;
    display: flex;
    position: relative;
+   overflow: hidden;
 `;
 
 export const StyledImageContainer = styled.div`

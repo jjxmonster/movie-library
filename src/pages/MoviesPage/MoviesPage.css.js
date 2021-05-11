@@ -1,7 +1,6 @@
-import React from 'react';
+import styled from 'styled-components';
 
-const MoviesContainer = () => {
-   return <div>KONTENER</div>;
-};
-
-export default MoviesContainer;
+export const StyledMoviesPageWrapper = styled.div`
+   min-height: 100vh;
+   width: 100%;
+`;

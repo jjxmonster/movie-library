@@ -3,7 +3,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { LandingPageContainer, MainSection } from './containers';
-import { MenuBar } from './components';
+import { MenuBar, LoadingIndicator } from './components';
 import { HomePage, MoviesPage } from './pages';
 
 import { ThemeProvider } from 'styled-components';
@@ -22,13 +22,13 @@ const App = () => {
 
    useEffect(() => {
       history.push('/home');
-   }, []);
+   }, [history]);
    return (
       <QueryClientProvider client={client}>
          <ThemeProvider theme={theme}>
             <GlobalStyles />
             <LandingPageContainer>
-               <Suspense fallback='loading...'>
+               <Suspense fallback={LoadingIndicator}>
                   <MenuBar />
                </Suspense>
                <MainSection>

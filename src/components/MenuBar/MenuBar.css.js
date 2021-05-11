@@ -30,7 +30,8 @@ export const StyledGenresList = styled.ul`
    background: ${({ theme }) => theme.colors.grey.dark};
    > h2 {
       color: ${({ theme }) => theme.colors.grey.normal};
-      font-weight: 600;
+      font-weight: 400;
+      text-transform: uppercase;
       font-size: 2.5vh;
       padding-left: 8%;
    }
