@@ -1,8 +1,8 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-import { getGenres } from '../../data/fetch/config,fetch.js';
+import { getGenres } from '../../data/fetch/config.fetch.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons';
@@ -17,15 +17,22 @@ import {
 const MenuBar = () => {
    const { data } = useQuery('genres', () => getGenres());
    const { genres } = data;
+   const history = useHistory();
+
+   const handleGenreClick = name => {
+      history.push(`/genre/${name.toLowerCase()}`);
+   };
 
    const genersList = genres.map(genre => {
       const { id, name } = genre;
+
       return (
-         <StyledGenresListElement key={id}>
-            {/* <Link> */}
+         <StyledGenresListElement
+            key={id}
+            onClick={() => handleGenreClick(name)}
+         >
             <FontAwesomeIcon className='listIcon' icon={faDotCircle} />
             <span>{name}</span>
-            {/* </Link> */}
          </StyledGenresListElement>
       );
    });

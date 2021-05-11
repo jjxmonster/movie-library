@@ -1,2 +1,2 @@
-export { default as LandingPage } from './LandingPage';
-export { default as MoviesSection } from './MoviesSection';
+export { default as LandingPageContainer } from './LandingPageContainer';
+export { default as MainSection } from './MainSection';
