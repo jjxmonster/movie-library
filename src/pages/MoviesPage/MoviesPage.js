@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { MoviesBar, MoviesListContainer } from '../../components';
+import {
+   LoadingIndicator,
+   MoviesBar,
+   MoviesListContainer,
+} from '../../components';
 import { StyledMoviesPageWrapper } from './MoviesPage.css';
 
 const MoviesPage = ({ getActiveGenre }) => {
@@ -13,7 +17,9 @@ const MoviesPage = ({ getActiveGenre }) => {
    return (
       <StyledMoviesPageWrapper>
          <MoviesBar genreName={name} />
-         <MoviesListContainer />
+         <Suspense fallback={<LoadingIndicator />}>
+            <MoviesListContainer />
+         </Suspense>
       </StyledMoviesPageWrapper>
    );
 };

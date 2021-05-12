@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 
 export const StyledLoadingIndicator = styled.div`
-   width: 80px;
-   height: 80px;
+   width: 100px;
+   height: 100px;
    position: absolute;
-
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
    > div {
       position: absolute;
       top: 33px;
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       background: ${({ theme }) => theme.colors.blue.dark};
       animation-timing-function: cubic-bezier(0, 1, 1, 0);

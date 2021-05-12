@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
@@ -19,8 +18,8 @@ const MenuBar = ({ activeGenre }) => {
    const { data } = useQuery('genres', () => getGenres());
    const { genres } = data;
    const history = useHistory();
-   const handleGenreClick = name => {
-      history.push(`/genre/${name.toLowerCase()}`);
+   const handleGenreClick = (name, id) => {
+      history.push(`/genre/${id}/${name.toLowerCase()}`);
    };
 
    const activeGenreElementName = genres.filter(
@@ -29,11 +28,10 @@ const MenuBar = ({ activeGenre }) => {
 
    const genersList = genres.map(genre => {
       const { id, name } = genre;
-
       return (
          <StyledGenresListElement
             key={id}
-            onClick={() => handleGenreClick(name)}
+            onClick={() => handleGenreClick(name, id)}
             isActive={
                activeGenre !== undefined
                   ? name === activeGenreElementName.name

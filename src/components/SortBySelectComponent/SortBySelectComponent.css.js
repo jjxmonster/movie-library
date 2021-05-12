@@ -25,6 +25,7 @@ export const StyledSortBySelectInput = styled.div`
 `;
 
 export const StyledSortOptionsList = styled.div`
+   z-index: 100;
    margin-top: 5px;
    width: 100%;
    height: 75%;

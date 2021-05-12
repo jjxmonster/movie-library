@@ -17,6 +17,7 @@ const client = new QueryClient({
    defaultOptions: {
       queries: {
          suspense: true,
+         refetchOnWindowFocus: false,
       },
    },
 });
@@ -44,7 +45,7 @@ const App = () => {
                   </Suspense>
                   <MainSection>
                      <Switch>
-                        <Route path='/genre/:name'>
+                        <Route path='/genre/:id/:name'>
                            <MoviesPage getActiveGenre={getActiveGenre} />
                         </Route>
                         <Route path='/home'>
