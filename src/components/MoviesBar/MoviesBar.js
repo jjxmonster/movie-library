@@ -1,13 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router';
 
 import { StyledMoviesBarWrapper } from './MoviesBar.css';
 import { SortBySelectComponent } from '../index';
-const MoviesBar = () => {
-   const { name } = useParams();
+const MoviesBar = ({ genreName }) => {
    return (
       <StyledMoviesBarWrapper>
-         <h1>{name.toUpperCase()} MOVIES</h1>
+         <h1>{genreName.toUpperCase()} MOVIES</h1>
          <SortBySelectComponent />
       </StyledMoviesBarWrapper>
    );

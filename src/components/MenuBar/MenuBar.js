@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
@@ -14,14 +15,17 @@ import {
    StyledGenresListElement,
 } from './MenuBar.css';
 
-const MenuBar = () => {
+const MenuBar = ({ activeGenre }) => {
    const { data } = useQuery('genres', () => getGenres());
    const { genres } = data;
    const history = useHistory();
-
    const handleGenreClick = name => {
       history.push(`/genre/${name.toLowerCase()}`);
    };
+
+   const activeGenreElementName = genres.filter(
+      genre => activeGenre === genre.name.toLowerCase()
+   )[0];
 
    const genersList = genres.map(genre => {
       const { id, name } = genre;
@@ -30,6 +34,11 @@ const MenuBar = () => {
          <StyledGenresListElement
             key={id}
             onClick={() => handleGenreClick(name)}
+            isActive={
+               activeGenre !== undefined
+                  ? name === activeGenreElementName.name
+                  : false
+            }
          >
             <FontAwesomeIcon className='listIcon' icon={faDotCircle} />
             <span>{name}</span>

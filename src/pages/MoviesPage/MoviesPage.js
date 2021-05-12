@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
-import { MoviesContext } from '../../context/moviesContext';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { MoviesBar } from '../../components';
+import { MoviesBar, MoviesListContainer } from '../../components';
 import { StyledMoviesPageWrapper } from './MoviesPage.css';
 
-const MoviesPage = () => {
-   const typeOfSort = useContext(MoviesContext);
-   console.log(typeOfSort);
+const MoviesPage = ({ getActiveGenre }) => {
+   const { name } = useParams();
+
+   useEffect(() => {
+      getActiveGenre(name);
+   }, [name, getActiveGenre]);
    return (
       <StyledMoviesPageWrapper>
-         <MoviesBar />
+         <MoviesBar genreName={name} />
+         <MoviesListContainer />
       </StyledMoviesPageWrapper>
    );
 };

@@ -1,6 +1,8 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
+import configureStore from './data/store/store';
 
 import { LandingPageContainer, MainSection } from './containers';
 import { MenuBar, LoadingIndicator } from './components';
@@ -10,40 +12,50 @@ import { ThemeProvider } from 'styled-components';
 import theme from './themes/theme';
 import GlobalStyles from './themes/GlobalStyles';
 
-const App = () => {
-   const client = new QueryClient({
-      defaultOptions: {
-         queries: {
-            suspense: true,
-         },
+const store = configureStore();
+const client = new QueryClient({
+   defaultOptions: {
+      queries: {
+         suspense: true,
       },
-   });
+   },
+});
+
+const App = () => {
    const history = useHistory();
+   const [activeGenre, setActiveGenre] = useState();
+
+   const getActiveGenre = genre => {
+      setActiveGenre(genre);
+   };
 
    useEffect(() => {
       history.push('/home');
    }, [history]);
+
    return (
-      <QueryClientProvider client={client}>
-         <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            <LandingPageContainer>
-               <Suspense fallback={LoadingIndicator}>
-                  <MenuBar />
-               </Suspense>
-               <MainSection>
-                  <Switch>
-                     <Route path='/genre/:name'>
-                        <MoviesPage />
-                     </Route>
-                     <Route path='/home'>
-                        <HomePage />
-                     </Route>
-                  </Switch>
-               </MainSection>
-            </LandingPageContainer>
-         </ThemeProvider>
-      </QueryClientProvider>
+      <Provider store={store}>
+         <QueryClientProvider client={client}>
+            <ThemeProvider theme={theme}>
+               <GlobalStyles />
+               <LandingPageContainer>
+                  <Suspense fallback={LoadingIndicator}>
+                     <MenuBar activeGenre={activeGenre} />
+                  </Suspense>
+                  <MainSection>
+                     <Switch>
+                        <Route path='/genre/:name'>
+                           <MoviesPage getActiveGenre={getActiveGenre} />
+                        </Route>
+                        <Route path='/home'>
+                           <HomePage />
+                        </Route>
+                     </Switch>
+                  </MainSection>
+               </LandingPageContainer>
+            </ThemeProvider>
+         </QueryClientProvider>
+      </Provider>
    );
 };
 

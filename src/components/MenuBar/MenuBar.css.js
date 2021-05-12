@@ -4,6 +4,7 @@ export const StyledMenuBarWrapper = styled.nav`
    width: 15%;
    height: 100vh;
    position: fixed;
+   z-index: 100;
    left: 0;
    display: flex;
    flex-direction: column;
@@ -75,4 +76,15 @@ export const StyledGenresListElement = styled.li`
       width: 100%;
       visibility: visible;
    }
+   ${({ isActive }) =>
+      isActive
+         ? `
+   & {
+      color: white;
+   }
+   &::after {
+      width: 100%;
+      visibility: visible;
+   }`
+         : null}
 `;

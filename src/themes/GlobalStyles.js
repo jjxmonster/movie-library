@@ -7,6 +7,10 @@ export default createGlobalStyle`
     box-sizing:border-box;
     font-family: 'Source Sans Pro', sans-serif;
   }
+  body{
+    background:${({ theme }) => theme.colors.grey.light};
+    overflow-x: hidden;
+  }
   a{
     text-decoration: none;
   }

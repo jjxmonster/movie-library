@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { MoviesContext } from '../../context/moviesContext';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeSortType } from '../../data/actions/actions';
 
 import {
    StyledComponentWrapper,
@@ -31,40 +33,43 @@ const sortOptions = [
 
 const SortBySelectComponent = () => {
    const [isListHidden, setIsListHidden] = useState(true);
-   const [typeOfSort, setTypeOfSort] = useState('Popularity');
+   const dispatch = useDispatch();
+   const typeOfSort = useSelector(store => store.movies.sortTypeObject).name;
 
    const optionsList = sortOptions.map(option => {
       const { name } = option;
       return (
-         <StyledSortOption key={name} onClick={() => changeSortType(name)}>
+         <StyledSortOption
+            key={name}
+            isSelect={name === typeOfSort}
+            onClick={() => handleChangeSortType(option)}
+         >
             {name}
          </StyledSortOption>
       );
    });
 
-   const changeSortType = name => {
+   const handleChangeSortType = option => {
       changeListVisibility();
-      setTypeOfSort(name);
+      dispatch(changeSortType(option));
    };
    const changeListVisibility = () => {
       setIsListHidden(!isListHidden);
    };
 
    return (
-      <MoviesContext.Provider value={{ typeOfSort }}>
-         <StyledComponentWrapper>
-            <StyledSortBySelectInput
-               isActive={!isListHidden}
-               onClick={changeListVisibility}
-            >
-               <span>{typeOfSort}</span>
-               <FontAwesomeIcon icon={faSortDown} />
-            </StyledSortBySelectInput>
-            <StyledSortOptionsList isHidden={isListHidden}>
-               {optionsList}
-            </StyledSortOptionsList>
-         </StyledComponentWrapper>
-      </MoviesContext.Provider>
+      <StyledComponentWrapper>
+         <StyledSortBySelectInput
+            isActive={!isListHidden}
+            onClick={changeListVisibility}
+         >
+            <span>{typeOfSort}</span>
+            <FontAwesomeIcon icon={faSortDown} />
+         </StyledSortBySelectInput>
+         <StyledSortOptionsList isHidden={isListHidden}>
+            {optionsList}
+         </StyledSortOptionsList>
+      </StyledComponentWrapper>
    );
 };
 
