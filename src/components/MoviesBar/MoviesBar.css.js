@@ -13,4 +13,5 @@ export const StyledMoviesBarWrapper = styled.div`
       font-weight: 300;
       font-size: 4vh;
    }
+   ${({ hideList }) => (hideList ? `z-index:0` : `z-index:200`)};
 `;

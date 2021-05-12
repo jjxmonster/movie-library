@@ -31,7 +31,7 @@ const sortOptions = [
    },
 ];
 
-const SortBySelectComponent = () => {
+const SortBySelectComponent = ({ isListSchouldBeHide }) => {
    const [isListHidden, setIsListHidden] = useState(true);
    const dispatch = useDispatch();
    const typeOfSort = useSelector(store => store.movies.sortTypeObject).name;
@@ -55,6 +55,7 @@ const SortBySelectComponent = () => {
    };
    const changeListVisibility = () => {
       setIsListHidden(!isListHidden);
+      isListSchouldBeHide(!isListHidden);
    };
 
    return (
