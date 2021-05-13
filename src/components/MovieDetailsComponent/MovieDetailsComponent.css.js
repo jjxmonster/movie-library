@@ -16,6 +16,7 @@ export const StyledMovieWrapper = styled.div`
    background-image: url(${({ imageUrl }) => imageUrl});
    background-repeat: no-repeat;
    background-size: 100%;
+   user-select: none;
 `;
 export const StyledMovieInformationWraper = styled.div`
    width: 100%;
@@ -96,7 +97,40 @@ export const StyledMovieInformationHeader = styled.div`
 export const StyledMovieInformationMain = styled.div`
    width: 50%;
    height: 60%;
-   color: white;
-   font-size: 2.5vh;
    padding-top: 2%;
+   display: flex;
+   flex-direction: column;
+`;
+
+export const StyledMovieDescriptionWrapper = styled.div`
+   flex: 2;
+   > p {
+      font-size: 2vh;
+      color: white;
+   }
+`;
+
+export const StyledButtonsWrapper = styled.div`
+   flex: 1;
+   display: flex;
+   align-items: center;
+`;
+
+export const StyledMovieButton = styled.button`
+   width: 150px;
+   height: 40px;
+   border: 1px solid ${({ theme }) => theme.colors.grey.light};
+   border-radius: 60px;
+   margin-right: 5%;
+   color: ${({ theme }) => theme.colors.grey.dark};
+   background: ${({ theme }) => theme.colors.grey.light};
+   font-size: 13px;
+   transition: 0.2s ease;
+   font-weight: 600;
+   > span {
+      margin-right: 5px;
+   }
+   &:hover {
+      transform: translateY(-5px);
+   }
 `;

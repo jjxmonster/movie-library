@@ -12,9 +12,13 @@ export const MoviesListElement = styled.div`
    position: relative;
    cursor: pointer;
    transition: 0.2s ease;
-   &:hover {
+   ${({ isRecomendation }) =>
+      isRecomendation
+         ? null
+         : ` &:hover {
       transform: scale(1.1);
-   }
+   }`}
+
    &:hover div {
       background: ${({ theme }) => theme.colors.grey.dark};
       border-radius: 0 0 1vh 1vh;

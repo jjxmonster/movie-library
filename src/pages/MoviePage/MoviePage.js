@@ -13,7 +13,9 @@ const MoviePage = () => {
          <Suspense fallback={<LoadingIndicator />}>
             <MovieDetailsComponent />
          </Suspense>
-         <MoviesRecomendation />
+         <Suspense fallback={<LoadingIndicator />}>
+            <MoviesRecomendation />
+         </Suspense>
       </MoviesPageWrapper>
    );
 };
