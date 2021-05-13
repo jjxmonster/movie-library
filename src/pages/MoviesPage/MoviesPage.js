@@ -5,6 +5,7 @@ import {
    LoadingIndicator,
    MoviesBar,
    MoviesListContainer,
+   Pagination,
 } from '../../components';
 import { StyledMoviesPageWrapper } from './MoviesPage.css';
 
@@ -20,6 +21,7 @@ const MoviesPage = ({ getActiveGenre }) => {
          <Suspense fallback={<LoadingIndicator />}>
             <MoviesListContainer />
          </Suspense>
+         <Pagination />
       </StyledMoviesPageWrapper>
    );
 };

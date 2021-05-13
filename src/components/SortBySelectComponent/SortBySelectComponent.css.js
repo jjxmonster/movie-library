@@ -21,7 +21,21 @@ export const StyledSortBySelectInput = styled.div`
    justify-content: space-between;
    cursor: pointer;
    padding: 0 1%;
-   ${({ isActive }) => (isActive ? `border:2px solid black;` : null)};
+
+   ${({ isActive }) =>
+      isActive
+         ? `
+      border:2px solid black;
+      > .selectIcon {
+         transition:.3s ease;
+        transform:rotate(-180deg);
+      }
+   `
+         : `
+         > .selectIcon {
+            transition:.3s ease;
+           transform:rotate(0deg);
+         }`};
 `;
 
 export const StyledSortOptionsList = styled.div`

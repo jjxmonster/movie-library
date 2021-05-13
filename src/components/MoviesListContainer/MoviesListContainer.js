@@ -19,8 +19,10 @@ const MoviesListContainer = () => {
    const [isMovieImageLoading, setIsMovieImageLoading] = useState(false);
    const { id } = useParams();
    const { queryString } = useSelector(store => store.movies.sortTypeObject);
-   const { data: movies } = useQuery(['movies', { queryString, id }], () =>
-      getMoviesByGenre(id, queryString, 1)
+   const numberOfPage = useSelector(store => store.movies.moviesPage);
+   const { data: movies } = useQuery(
+      ['movies', { queryString, id, numberOfPage }],
+      () => getMoviesByGenre(id, queryString, numberOfPage)
    );
 
    const moviesList = movies.map(movie => {

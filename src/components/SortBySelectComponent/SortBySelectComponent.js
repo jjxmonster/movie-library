@@ -65,7 +65,7 @@ const SortBySelectComponent = ({ isListSchouldBeHide }) => {
             onClick={changeListVisibility}
          >
             <span>{typeOfSort}</span>
-            <FontAwesomeIcon icon={faSortDown} />
+            <FontAwesomeIcon icon={faSortDown} className='selectIcon' />
          </StyledSortBySelectInput>
          <StyledSortOptionsList isHidden={isListHidden}>
             {optionsList}

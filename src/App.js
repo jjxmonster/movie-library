@@ -48,6 +48,9 @@ const App = () => {
                         <Route path='/genre/:id/:name'>
                            <MoviesPage getActiveGenre={getActiveGenre} />
                         </Route>
+                        <Route path='/movie/:id'>
+                           <HomePage />
+                        </Route>
                         <Route path='/home'>
                            <HomePage />
                         </Route>
