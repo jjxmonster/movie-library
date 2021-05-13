@@ -6,7 +6,7 @@ import configureStore from './data/store/store';
 
 import { LandingPageContainer, MainSection } from './containers';
 import { MenuBar, LoadingIndicator } from './components';
-import { HomePage, MoviesPage } from './pages';
+import { HomePage, MoviesPage, MoviePage } from './pages';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './themes/theme';
@@ -49,7 +49,7 @@ const App = () => {
                            <MoviesPage getActiveGenre={getActiveGenre} />
                         </Route>
                         <Route path='/movie/:id'>
-                           <HomePage />
+                           <MoviePage />
                         </Route>
                         <Route path='/home'>
                            <HomePage />

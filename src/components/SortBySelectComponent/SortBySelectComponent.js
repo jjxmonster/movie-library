@@ -42,7 +42,10 @@ const SortBySelectComponent = ({ isListSchouldBeHide }) => {
          <StyledSortOption
             key={name}
             isSelect={name === typeOfSort}
-            onClick={() => handleChangeSortType(option)}
+            onClick={e => {
+               e.stopPropagation();
+               handleChangeSortType(option);
+            }}
          >
             {name}
          </StyledSortOption>
@@ -57,12 +60,19 @@ const SortBySelectComponent = ({ isListSchouldBeHide }) => {
       setIsListHidden(!isListHidden);
       isListSchouldBeHide(!isListHidden);
    };
+   document.querySelector('body').addEventListener('click', () => {
+      setIsListHidden(true);
+      isListSchouldBeHide(true);
+   });
 
    return (
       <StyledComponentWrapper>
          <StyledSortBySelectInput
             isActive={!isListHidden}
-            onClick={changeListVisibility}
+            onClick={e => {
+               e.stopPropagation();
+               changeListVisibility();
+            }}
          >
             <span>{typeOfSort}</span>
             <FontAwesomeIcon icon={faSortDown} className='selectIcon' />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 
 import { getMoviesByGenre } from '../../data/fetch/movies.fetch';
 
@@ -18,17 +18,23 @@ import LoadingIndicator from '../LoadingIndicator/LoadingIndicator.js';
 const MoviesListContainer = () => {
    const [isMovieImageLoading, setIsMovieImageLoading] = useState(false);
    const { id } = useParams();
+   const history = useHistory();
    const { queryString } = useSelector(store => store.movies.sortTypeObject);
    const numberOfPage = useSelector(store => store.movies.moviesPage);
+
    const { data: movies } = useQuery(
       ['movies', { queryString, id, numberOfPage }],
       () => getMoviesByGenre(id, queryString, numberOfPage)
    );
 
+   const handleMovieClick = id => {
+      history.push(`/movie/${id}`);
+   };
+
    const moviesList = movies.map(movie => {
       const { title, id, poster_path, release_date, vote_average } = movie;
       return (
-         <MoviesListElement key={id}>
+         <MoviesListElement key={id} onClick={() => handleMovieClick(id)}>
             {isMovieImageLoading ? (
                <LoadingIndicator />
             ) : (

@@ -4,3 +4,5 @@ export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as SortBySelectComponent } from './SortBySelectComponent';
 export { default as MoviesListContainer } from './MoviesListContainer';
 export { default as Pagination } from './Pagination';
+export { default as MovieDetailsComponent } from './MovieDetailsComponent';
+export { default as MoviesRecomendation } from './MoviesRecomendation';
