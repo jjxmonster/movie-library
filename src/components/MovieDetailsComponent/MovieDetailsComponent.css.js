@@ -38,6 +38,7 @@ export const StyledMovieInformationHeader = styled.div`
    width: 60%;
    height: 40%;
    display: flex;
+   position: relative;
    > div:nth-child(1) {
       flex: 1;
       > img {
@@ -49,6 +50,7 @@ export const StyledMovieInformationHeader = styled.div`
       flex: 3.5;
       padding-left: 2%;
       > h3 {
+         width: 200%;
          text-transform: uppercase;
          color: white;
          font-weight: 300;
@@ -65,7 +67,11 @@ export const StyledMovieInformationHeader = styled.div`
          font-size: 2vh;
       }
       > .informations {
-         color: ${({ theme }) => theme.colors.grey.light};
+         position: absolute;
+         bottom: 0;
+         text-transform: uppercase;
+         font-weight: 700;
+         color: #696969;
       }
       > .genres {
          padding-top: 5%;
@@ -73,7 +79,7 @@ export const StyledMovieInformationHeader = styled.div`
             color: white;
             font-size: 1.5vh;
          }
-         > span {
+         > a {
             text-transform: uppercase;
             font-size: 1.3vh;
             color: grey;

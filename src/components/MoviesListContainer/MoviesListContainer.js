@@ -13,10 +13,8 @@ import {
    MoviesListElement,
    MoviesCartInformation,
 } from './MoviesListContainer.css';
-import LoadingIndicator from '../LoadingIndicator/LoadingIndicator.js';
 
 const MoviesListContainer = () => {
-   const [isMovieImageLoading, setIsMovieImageLoading] = useState(false);
    const { id } = useParams();
    const history = useHistory();
    const { queryString } = useSelector(store => store.movies.sortTypeObject);
@@ -35,18 +33,13 @@ const MoviesListContainer = () => {
       const { title, id, poster_path, release_date, vote_average } = movie;
       return (
          <MoviesListElement key={id} onClick={() => handleMovieClick(id)}>
-            {isMovieImageLoading ? (
-               <LoadingIndicator />
-            ) : (
-               <img
-                  src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
-                  alt='movieImage'
-                  onLoad={() => setIsMovieImageLoading(false)}
-                  onError={e => {
-                     e.target.src = DefaultImage;
-                  }}
-               />
-            )}
+            <img
+               src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
+               alt='movieImage'
+               onError={e => {
+                  e.target.src = DefaultImage;
+               }}
+            />
             <MoviesCartInformation>
                <h2>{title}</h2>
                <p>
