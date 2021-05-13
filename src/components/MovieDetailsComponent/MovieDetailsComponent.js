@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
@@ -23,10 +23,12 @@ import {
    StyledButtonsWrapper,
    StyledMovieDescriptionWrapper,
 } from './MovieDetailsComponent.css';
+import { TrailerModal } from '../index.js';
 
 const MovieWrapper = () => {
    const { id } = useParams();
-   const { data: movie } = useQuery('movie', () => getMovie(id));
+   const history = useHistory();
+   const { data: movie } = useQuery(['movie', { id }], () => getMovie(id));
    const {
       backdrop_path,
       title,
@@ -38,7 +40,15 @@ const MovieWrapper = () => {
       tagline,
       vote_average,
       overview,
+      homepage,
    } = movie;
+
+   const handlePushToMovieWebsite = () => {
+      window.open(homepage);
+   };
+   const handleOpenTrailer = id => {
+      history.push(`/movie/${id}/trailer`);
+   };
 
    const genresList = genres.map(genre => {
       const { name, id } = genre;
@@ -52,57 +62,65 @@ const MovieWrapper = () => {
 
    console.log(movie);
    return (
-      <StyledMovieDetailsComponent>
-         <StyledMovieWrapper
-            imageUrl={`https://image.tmdb.org/t/p/original//${backdrop_path}`}
-         >
-            <StyledMovieInformationWraper>
-               <StyledMovieInformationHeader>
-                  <div>
-                     <img
-                        src={`https://image.tmdb.org/t/p/original//${poster_path}`}
-                        alt={'movie'}
-                        onError={e => {
-                           e.target.src = defaultImage;
-                        }}
-                     />
-                  </div>
-                  <div>
-                     <h3>{title}</h3>
-                     <h4>{tagline}</h4>
-                     <p className='vote_average'>
-                        <FontAwesomeIcon icon={faStar} />
-                        {vote_average}/10
-                     </p>
-
-                     <div className='genres'>
-                        <h5>GENRES</h5>
-                        {genresList}
+      <>
+         <StyledMovieDetailsComponent>
+            <StyledMovieWrapper
+               imageUrl={`https://image.tmdb.org/t/p/original//${backdrop_path}`}
+            >
+               <StyledMovieInformationWraper>
+                  <StyledMovieInformationHeader>
+                     <div>
+                        <img
+                           src={`https://image.tmdb.org/t/p/original//${poster_path}`}
+                           alt={'movie'}
+                           onError={e => {
+                              e.target.src = defaultImage;
+                           }}
+                        />
                      </div>
-                     <p className='informations'>
-                        {runtime}min / {spoken_languages[0].english_name} /{' '}
-                        {release_date.substring(0, 4)}
-                     </p>
-                  </div>
-               </StyledMovieInformationHeader>
-               <StyledMovieInformationMain>
-                  <StyledMovieDescriptionWrapper>
-                     <p>{overview}</p>
-                  </StyledMovieDescriptionWrapper>
-                  <StyledButtonsWrapper>
-                     <StyledMovieButton>
-                        <span>Watch trailer</span>
-                        <FontAwesomeIcon icon={faPlay} />
-                     </StyledMovieButton>
-                     <StyledMovieButton>
-                        <span>Movie website</span>
-                        <FontAwesomeIcon icon={faExternalLinkAlt} />
-                     </StyledMovieButton>
-                  </StyledButtonsWrapper>
-               </StyledMovieInformationMain>
-            </StyledMovieInformationWraper>
-         </StyledMovieWrapper>
-      </StyledMovieDetailsComponent>
+                     <div>
+                        <h3>{title}</h3>
+                        <h4>{tagline}</h4>
+                        <p className='vote_average'>
+                           <FontAwesomeIcon icon={faStar} />
+                           {vote_average}/10
+                        </p>
+
+                        <div className='genres'>
+                           <h5>GENRES</h5>
+                           {genresList}
+                        </div>
+                        <p className='informations'>
+                           {runtime}min / {spoken_languages[0].english_name} /{' '}
+                           {release_date.substring(0, 4)}
+                        </p>
+                     </div>
+                  </StyledMovieInformationHeader>
+                  <StyledMovieInformationMain>
+                     <StyledMovieDescriptionWrapper>
+                        <p>{overview}</p>
+                     </StyledMovieDescriptionWrapper>
+                     <StyledButtonsWrapper>
+                        <StyledMovieButton
+                           onClick={() => handleOpenTrailer(id)}
+                        >
+                           <span>Watch trailer</span>
+                           <FontAwesomeIcon icon={faPlay} />
+                        </StyledMovieButton>
+                        <StyledMovieButton onClick={handlePushToMovieWebsite}>
+                           <span>Movie website</span>
+
+                           <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </StyledMovieButton>
+                     </StyledButtonsWrapper>
+                  </StyledMovieInformationMain>
+               </StyledMovieInformationWraper>
+            </StyledMovieWrapper>
+         </StyledMovieDetailsComponent>
+         <Route path='/movie/:id/trailer'>
+            <TrailerModal />
+         </Route>
+      </>
    );
 };
 

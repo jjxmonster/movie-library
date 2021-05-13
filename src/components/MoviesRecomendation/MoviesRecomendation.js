@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 
 import { getMovieRecomendations } from '../../data/fetch/movies.fetch';
 
@@ -11,12 +11,18 @@ import {
    MoviesListElement,
    MoviesCartInformation,
 } from '../MoviesListContainer/MoviesListContainer.css';
+import DefaultImage from '../../images/imageDefault.svg';
 
 const MoviesRecomendation = () => {
    const { id } = useParams();
-   const { data: recomendations } = useQuery('recomendations', () =>
+   const history = useHistory();
+   const { data: recomendations } = useQuery(['recomendations', { id }], () =>
       getMovieRecomendations(id)
    );
+
+   const handleMovieClick = id => {
+      history.push(`/movie/${id}`);
+   };
 
    const recomendationsList = recomendations.map((rec, index) => {
       const { title, id, poster_path, release_date, vote_average } = rec;
@@ -24,13 +30,17 @@ const MoviesRecomendation = () => {
          return null;
       }
       return (
-         <MoviesListElement isRecomendation key={id}>
+         <MoviesListElement
+            isRecomendation
+            key={id}
+            onClick={() => handleMovieClick(id)}
+         >
             <img
                src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
                alt='movieImage'
-               // onError={e => {
-               //    e.target.src = DefaultImage;
-               // }}
+               onError={e => {
+                  e.target.src = DefaultImage;
+               }}
             />
             <MoviesCartInformation>
                <h2>{title}</h2>
