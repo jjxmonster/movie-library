@@ -19,5 +19,4 @@ export const StyledModalWrapper = styled.div`
 export const StyledTrailerContainer = styled.div`
    width: 40vw;
    height: 40vh;
-   background: red;
 `;

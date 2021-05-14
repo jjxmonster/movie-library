@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Link, Route, useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -23,7 +23,7 @@ import {
    StyledButtonsWrapper,
    StyledMovieDescriptionWrapper,
 } from './MovieDetailsComponent.css';
-import { TrailerModal } from '../index.js';
+import { LoadingIndicator, TrailerModal } from '../index.js';
 
 const MovieWrapper = () => {
    const { id } = useParams();
@@ -60,7 +60,6 @@ const MovieWrapper = () => {
       );
    });
 
-   console.log(movie);
    return (
       <>
          <StyledMovieDetailsComponent>
@@ -118,7 +117,9 @@ const MovieWrapper = () => {
             </StyledMovieWrapper>
          </StyledMovieDetailsComponent>
          <Route path='/movie/:id/trailer'>
-            <TrailerModal />
+            <Suspense fallback={<LoadingIndicator />}>
+               <TrailerModal />
+            </Suspense>
          </Route>
       </>
    );
