@@ -48,4 +48,4 @@ npm start
 -  Styled Components
 -  GSAP
 
-Design inspiration by <a href='https://github.com/fidalgodev'>Fidalgo</a>
+Design inspired by <a href='https://github.com/fidalgodev'>Fidalgo</a>
