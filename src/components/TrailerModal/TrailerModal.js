@@ -6,6 +6,8 @@ import { useHistory, useParams } from 'react-router';
 
 import { getMovieTrailer } from '../../data/fetch/movies.fetch';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { StyledModalWrapper, StyledTrailerContainer } from './TrailerModal.css';
 
 const TrailerModal = () => {
@@ -13,7 +15,7 @@ const TrailerModal = () => {
    const { id } = useParams();
    const { data: trailer } = useQuery('trailer', () => getMovieTrailer(id));
    const { key } = trailer;
-   console.log(trailer);
+
    const handleGoBack = () => {
       history.goBack();
       document.querySelector('body').style = 'overflow-y:visible';
@@ -24,9 +26,14 @@ const TrailerModal = () => {
    return createPortal(
       <StyledModalWrapper onClick={handleGoBack}>
          <StyledTrailerContainer onClick={e => e.stopPropagation()}>
+            <FontAwesomeIcon
+               icon={faTimes}
+               className='modalCloseIcon'
+               onClick={handleGoBack}
+            />
             <iframe
-               width='100%'
-               height='100%'
+               width='90%'
+               height='90%'
                src={`https://www.youtube.com/embed/${key}?autoplay=1`}
                title='YouTube video player'
                frameBorder='0'

@@ -13,10 +13,27 @@ export const StyledModalWrapper = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-    background: rgba(46, 54, 66,0.6 );
+    background: rgba(46, 54, 66,0.8 );
 `;
 
 export const StyledTrailerContainer = styled.div`
-   width: 40vw;
-   height: 40vh;
+   width: 50vw;
+   height: 50vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   > .modalCloseIcon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: auto;
+      color: white;
+      font-size: 4vh;
+      cursor: pointer;
+      transition: 0.2s ease;
+      &:hover {
+         color: ${({ theme }) => theme.colors.grey.light};
+      }
+   }
 `;
