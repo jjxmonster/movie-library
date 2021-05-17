@@ -5,6 +5,9 @@ export const StyledMovieDetailsComponent = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+   @media (max-width: 750px) {
+      min-height: 550px;
+   }
 `;
 
 export const StyledMovieWrapper = styled.div`
@@ -13,10 +16,11 @@ export const StyledMovieWrapper = styled.div`
    border-radius: 20px;
    overflow: hidden;
    position: relative;
-   background-image: url(${({ imageUrl }) => imageUrl});
-   background-repeat: no-repeat;
-   background-size: 100%;
+   background: url(${({ imageUrl }) => imageUrl}) no-repeat 100% 100%;
    user-select: none;
+   @media (max-width: 750px) {
+      width: 95%;
+   }
 `;
 export const StyledMovieInformationWraper = styled.div`
    width: 100%;
@@ -33,6 +37,14 @@ export const StyledMovieInformationWraper = styled.div`
       rgba(46, 54, 66, 0.927608543417367) 50%,
       rgba(0, 0, 0, 0) 100%
    );
+   @media (max-width: 750px) {
+      background: linear-gradient(
+         180deg,
+         rgba(46, 54, 66, 1) 10%,
+         rgba(46, 54, 66, 0.927608543417367) 60%,
+         rgba(0, 0, 0, 0) 100%
+      );
+   }
 `;
 
 export const StyledMovieInformationHeader = styled.div`
@@ -40,8 +52,14 @@ export const StyledMovieInformationHeader = styled.div`
    height: 40%;
    display: flex;
    position: relative;
+   @media (max-width: 750px) {
+      width: 100%;
+   }
    > div:nth-child(1) {
       flex: 1;
+      @media (max-width: 750px) {
+         flex: 2;
+      }
       > img {
          width: 100%;
          height: 100%;
@@ -56,6 +74,10 @@ export const StyledMovieInformationHeader = styled.div`
          color: white;
          font-weight: 300;
          font-size: 4vh;
+         @media (max-width: 750px) {
+            width: 100%;
+            font-size: 3vh;
+         }
       }
       > h4 {
          color: ${({ theme }) => theme.colors.grey.light};
@@ -100,6 +122,10 @@ export const StyledMovieInformationMain = styled.div`
    padding-top: 2%;
    display: flex;
    flex-direction: column;
+   @media (max-width: 750px) {
+      width: 100%;
+      padding-top: 5%;
+   }
 `;
 
 export const StyledMovieDescriptionWrapper = styled.div`

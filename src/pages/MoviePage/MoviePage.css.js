@@ -5,4 +5,7 @@ export const MoviesPageWrapper = styled.div`
    height: 150%;
    display: flex;
    flex-direction: column;
+   @media (max-width: 750px) {
+      height: 200%;
+   }
 `;

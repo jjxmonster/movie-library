@@ -4,6 +4,8 @@ import {
    INCREMENT_PAGE_NUMBER,
 } from '../constants/constants';
 
+// movies
+
 export const changeSortType = type => {
    return {
       type: CHANGE_TYPE_OF_SORT,

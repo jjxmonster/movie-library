@@ -9,6 +9,24 @@ export const StyledMenuBarWrapper = styled.nav`
    display: flex;
    flex-direction: column;
    background: ${({ theme }) => theme.colors.grey.light};
+
+   // MOBILE
+   @media (max-width: 750px) {
+      transition: 0.4s ease;
+      position: fixed;
+      width: 80%;
+      border-right: 2px solid ${({ theme }) => theme.colors.grey.dark};
+      ${({ isMobileMenuActive }) =>
+         isMobileMenuActive ? `margin-left: 0%` : `margin-left: -80%`}
+   }
+   > .menuMobileCloseIcon {
+      position: absolute;
+      right: 1vh;
+      top: 1vh;
+      color: white;
+      font-size: 3vh;
+      margin: auto;
+   }
 `;
 
 export const StyledLogoWrapper = styled.div`
@@ -21,6 +39,9 @@ export const StyledLogoWrapper = styled.div`
       height:90%;
       object:fit:contain;
    }
+   @media (max-width: 750px) {
+      display:none;
+   }
 `;
 export const StyledGenresList = styled.ul`
    padding: 10% 0;
@@ -28,6 +49,7 @@ export const StyledGenresList = styled.ul`
    display: flex;
    flex-direction: column;
    border-top-right-radius: 15px;
+
    background: ${({ theme }) => theme.colors.grey.dark};
    > h2 {
       color: ${({ theme }) => theme.colors.grey.normal};
@@ -35,6 +57,9 @@ export const StyledGenresList = styled.ul`
       text-transform: uppercase;
       font-size: 2.5vh;
       padding-left: 8%;
+   }
+   @media (max-width: 750px) {
+      border-top-right-radius: 0px;
    }
 `;
 

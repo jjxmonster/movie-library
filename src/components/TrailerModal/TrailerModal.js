@@ -32,13 +32,13 @@ const TrailerModal = () => {
                onClick={handleGoBack}
             />
             <iframe
-               width='90%'
+               width='100%'
                height='90%'
                src={`https://www.youtube.com/embed/${key}?autoplay=1`}
                title='YouTube video player'
                frameBorder='0'
                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-               allowfullscreen
+               allowFullScreen
                loading='lazy'
             ></iframe>
          </StyledTrailerContainer>

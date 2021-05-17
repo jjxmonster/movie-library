@@ -25,4 +25,11 @@ export default createGlobalStyle`
     background:transparent;
     outline:none;
   }
-`;
+  .menuMobileOpenIcon{
+    z-index:100;
+    position:fixed;
+    left:2vh;
+    top:2vh;
+    font-size:3vh;
+  }
+  `;

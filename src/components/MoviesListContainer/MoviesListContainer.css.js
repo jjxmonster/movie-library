@@ -6,6 +6,11 @@ export const MoviesListWrapper = styled.div`
    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
    grid-auto-rows: minmax(450px, auto);
    grid-gap: 40px;
+   @media (max-width: 750px) {
+      padding: 0 5% 30%;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      grid-auto-rows: minmax(320px, auto);
+   }
 `;
 
 export const MoviesListElement = styled.div`

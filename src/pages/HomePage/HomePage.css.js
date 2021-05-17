@@ -6,6 +6,10 @@ export const StyledHomePageWrapper = styled.div`
    display: flex;
    position: relative;
    overflow: hidden;
+   @media (max-width: 750px) {
+      flex-direction: column;
+      padding: 5% 0;
+   }
 `;
 
 export const StyledImageContainer = styled.div`

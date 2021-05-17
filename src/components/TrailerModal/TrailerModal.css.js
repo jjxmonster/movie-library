@@ -23,6 +23,10 @@ export const StyledTrailerContainer = styled.div`
    justify-content: center;
    align-items: center;
    position: relative;
+   @media (max-width: 750px) {
+      width: 100vw;
+      height: 35vh;
+   }
    > .modalCloseIcon {
       position: absolute;
       top: 0;
