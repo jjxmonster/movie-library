@@ -10,11 +10,7 @@ import {
 import { getGenres } from '../../data/fetch/config.fetch.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-   faDotCircle,
-   faTimes,
-   faBars,
-} from '@fortawesome/free-solid-svg-icons';
+import { faDotCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../images/logo.svg';
 import {
    StyledMenuBarWrapper,
