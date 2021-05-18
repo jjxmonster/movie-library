@@ -8,7 +8,7 @@ export const StyledHomePageWrapper = styled.div`
    overflow: hidden;
    @media (max-width: 750px) {
       flex-direction: column;
-      padding: 5% 0;
+      padding: 25% 0;
    }
 `;
 
@@ -29,9 +29,17 @@ export const StyledImageContainer = styled.div`
       content: '';
       border-left: 2px solid ${({ theme }) => theme.colors.grey.normal};
    }
+   @media (max-width: 750px) {
+      &::after {
+         border: 0;
+      }
+   }
    > img {
       width: 80%;
       height: 50%;
+      @media (max-width: 750px) {
+         width: 100%;
+      }
    }
 `;
 export const StyledTextContainer = styled.div`
@@ -40,24 +48,33 @@ export const StyledTextContainer = styled.div`
    align-items: center;
    justify-content: center;
    flex-direction: column;
-
    > h1 {
       text-align: center;
       font-size: 8vh;
       font-weight: 600;
       text-transform: uppercase;
       color: ${({ theme }) => theme.colors.blue.dark};
+      @media (max-width: 750px) {
+         font-size: 5vh;
+      }
    }
    > p {
       text-align: center;
       font-size: 4vh;
       font-weight: 500;
       color: ${({ theme }) => theme.colors.grey.dark};
+      @media (max-width: 750px) {
+         font-size: 3vh;
+      }
    }
    .landingIcon {
       font-size: 20vh;
       transform: rotate(180deg);
       color: ${({ theme }) => theme.colors.grey.dark};
+      @media (max-width: 750px) {
+         font-size: 15vh;
+         transform: rotate(240deg);
+      }
    }
 `;
 

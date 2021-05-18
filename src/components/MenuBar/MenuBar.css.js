@@ -9,7 +9,6 @@ export const StyledMenuBarWrapper = styled.nav`
    display: flex;
    flex-direction: column;
    background: ${({ theme }) => theme.colors.grey.light};
-
    // MOBILE
    @media (max-width: 750px) {
       transition: 0.4s ease;

@@ -16,7 +16,9 @@ const HomePage = () => {
       <StyledHomePageWrapper>
          <StyledTextContainer>
             <h1>Welcome to Movies Library!</h1>
-            <p>Choose your favorite genre and enjoy it&#128293;</p>
+            <p>
+               Choose your fav genre, find your fav movie and enjoy it&#128293;
+            </p>
             <FontAwesomeIcon icon={faShare} className='landingIcon' />
          </StyledTextContainer>
          <StyledImageContainer>

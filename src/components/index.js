@@ -7,3 +7,4 @@ export { default as Pagination } from './Pagination';
 export { default as MovieDetailsComponent } from './MovieDetailsComponent';
 export { default as MoviesRecomendation } from './MoviesRecomendation';
 export { default as TrailerModal } from './TrailerModal';
+export { default as MobileBar } from './MobileBar';

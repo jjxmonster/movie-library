@@ -19,7 +19,6 @@ export const moviesReducer = (state = moviesState, action) => {
          return { ...state, sortTypeObject: payload };
       case INCREMENT_PAGE_NUMBER:
          return { ...state, moviesPage: payload + 1 };
-
       case DECREMENT_PAGE_NUMBER:
          return { ...state, moviesPage: payload - 1 };
       default:

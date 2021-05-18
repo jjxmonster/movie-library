@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from './data/store/store';
 
 import { LandingPageContainer, MainSection } from './containers';
-import { MenuBar, LoadingIndicator } from './components';
+import { MenuBar, LoadingIndicator, MobileBar } from './components';
 import { HomePage, MoviesPage, MoviePage } from './pages';
 
 import { ThemeProvider } from 'styled-components';
@@ -40,6 +40,7 @@ const App = () => {
             <ThemeProvider theme={theme}>
                <GlobalStyles />
                <LandingPageContainer>
+                  <MobileBar />
                   <Suspense fallback={LoadingIndicator}>
                      <MenuBar activeGenre={activeGenre} />
                   </Suspense>

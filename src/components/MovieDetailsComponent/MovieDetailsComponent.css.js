@@ -7,6 +7,7 @@ export const StyledMovieDetailsComponent = styled.div`
    justify-content: center;
    @media (max-width: 750px) {
       min-height: 550px;
+      align-items: flex-end;
    }
 `;
 
@@ -16,10 +17,12 @@ export const StyledMovieWrapper = styled.div`
    border-radius: 20px;
    overflow: hidden;
    position: relative;
-   background: url(${({ imageUrl }) => imageUrl}) no-repeat 100% 100%;
+   background: url(${({ imageUrl }) => imageUrl}) no-repeat;
+   background-size: 100%;
    user-select: none;
    @media (max-width: 750px) {
       width: 95%;
+      background-size: 100% 100%;
    }
 `;
 export const StyledMovieInformationWraper = styled.div`
